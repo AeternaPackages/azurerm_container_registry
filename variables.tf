@@ -121,22 +121,22 @@ EOT
       identity_client_id = string
       key_vault_key_id   = string
     }))
-    georeplications = optional(object({
+    georeplications = optional(list(object({
       location                  = string
       regional_endpoint_enabled = optional(bool)
       tags                      = optional(map(string))
       zone_redundancy_enabled   = optional(bool) # Default: false
-    }))
+    })))
     identity = optional(object({
       identity_ids = optional(set(string))
       type         = string
     }))
     network_rule_set = optional(object({
       default_action = optional(string) # Default: "Allow"
-      ip_rule = optional(object({
+      ip_rule = optional(list(object({
         action   = string
         ip_range = string
-      }))
+      })))
     }))
     container_connected_registries = optional(map(object({
       name               = string
@@ -149,12 +149,12 @@ EOT
       sync_message_ttl   = optional(string) # Default: "P1D"
       sync_schedule      = optional(string) # Default: "* * * * *"
       sync_window        = optional(string)
-      notification = optional(object({
+      notification = optional(list(object({
         action = string
         digest = optional(string)
         name   = string
         tag    = optional(string)
-      }))
+      })))
     })))
     container_registry_agent_pools = optional(map(object({
       location                  = string
@@ -243,17 +243,17 @@ EOT
         variant      = optional(string)
       }))
       registry_credential = optional(object({
-        custom = optional(object({
+        custom = optional(list(object({
           identity     = optional(string)
           login_server = string
           password     = optional(string)
           username     = optional(string)
-        }))
+        })))
         source = optional(object({
           login_mode = string
         }))
       }))
-      source_trigger = optional(object({
+      source_trigger = optional(list(object({
         authentication = optional(object({
           expire_in_seconds = optional(number)
           refresh_token     = optional(string)
@@ -267,12 +267,12 @@ EOT
         name           = string
         repository_url = string
         source_type    = string
-      }))
-      timer_trigger = optional(object({
+      })))
+      timer_trigger = optional(list(object({
         enabled  = optional(bool) # Default: true
         name     = string
         schedule = string
-      }))
+      })))
       container_registry_task_schedule_run_nows = optional(map(object({
 
       })))
