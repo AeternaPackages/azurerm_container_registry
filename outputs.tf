@@ -1,4 +1,9 @@
 # --- azurerm_container_registry ---
+output "container_registries_id" {
+  description = "Map of id values across all container_registries, keyed the same as var.container_registries"
+  value       = module.container_registries.container_registries_id
+}
+
 output "container_registries_admin_enabled" {
   description = "Map of admin_enabled values across all container_registries, keyed the same as var.container_registries"
   value       = module.container_registries.container_registries_admin_enabled
@@ -116,6 +121,11 @@ output "container_registries_zone_redundancy_enabled" {
 }
 
 # --- azurerm_container_connected_registry ---
+output "container_connected_registries_id" {
+  description = "Map of id values across all container_connected_registries, keyed the same as var.container_connected_registries"
+  value       = module.container_connected_registries.container_connected_registries_id
+}
+
 output "container_connected_registries_audit_log_enabled" {
   description = "Map of audit_log_enabled values across all container_connected_registries, keyed the same as var.container_connected_registries"
   value       = module.container_connected_registries.container_connected_registries_audit_log_enabled
@@ -177,6 +187,11 @@ output "container_connected_registries_sync_window" {
 }
 
 # --- azurerm_container_registry_agent_pool ---
+output "container_registry_agent_pools_id" {
+  description = "Map of id values across all container_registry_agent_pools, keyed the same as var.container_registry_agent_pools"
+  value       = module.container_registry_agent_pools.container_registry_agent_pools_id
+}
+
 output "container_registry_agent_pools_container_registry_name" {
   description = "Map of container_registry_name values across all container_registry_agent_pools, keyed the same as var.container_registry_agent_pools"
   value       = module.container_registry_agent_pools.container_registry_agent_pools_container_registry_name
@@ -218,6 +233,11 @@ output "container_registry_agent_pools_virtual_network_subnet_id" {
 }
 
 # --- azurerm_container_registry_cache_rule ---
+output "container_registry_cache_rules_id" {
+  description = "Map of id values across all container_registry_cache_rules, keyed the same as var.container_registry_cache_rules"
+  value       = module.container_registry_cache_rules.container_registry_cache_rules_id
+}
+
 output "container_registry_cache_rules_container_registry_id" {
   description = "Map of container_registry_id values across all container_registry_cache_rules, keyed the same as var.container_registry_cache_rules"
   value       = module.container_registry_cache_rules.container_registry_cache_rules_container_registry_id
@@ -244,6 +264,11 @@ output "container_registry_cache_rules_target_repo" {
 }
 
 # --- azurerm_container_registry_credential_set ---
+output "container_registry_credential_sets_id" {
+  description = "Map of id values across all container_registry_credential_sets, keyed the same as var.container_registry_credential_sets"
+  value       = module.container_registry_credential_sets.container_registry_credential_sets_id
+}
+
 output "container_registry_credential_sets_authentication_credentials" {
   description = "Map of authentication_credentials values across all container_registry_credential_sets, keyed the same as var.container_registry_credential_sets"
   value       = module.container_registry_credential_sets.container_registry_credential_sets_authentication_credentials
@@ -270,6 +295,11 @@ output "container_registry_credential_sets_name" {
 }
 
 # --- azurerm_container_registry_scope_map ---
+output "container_registry_scope_maps_id" {
+  description = "Map of id values across all container_registry_scope_maps, keyed the same as var.container_registry_scope_maps"
+  value       = module.container_registry_scope_maps.container_registry_scope_maps_id
+}
+
 output "container_registry_scope_maps_actions" {
   description = "Map of actions values across all container_registry_scope_maps, keyed the same as var.container_registry_scope_maps"
   value       = module.container_registry_scope_maps.container_registry_scope_maps_actions
@@ -296,6 +326,11 @@ output "container_registry_scope_maps_resource_group_name" {
 }
 
 # --- azurerm_container_registry_task ---
+output "container_registry_tasks_id" {
+  description = "Map of id values across all container_registry_tasks, keyed the same as var.container_registry_tasks"
+  value       = module.container_registry_tasks.container_registry_tasks_id
+}
+
 output "container_registry_tasks_agent_pool_name" {
   description = "Map of agent_pool_name values across all container_registry_tasks, keyed the same as var.container_registry_tasks"
   value       = module.container_registry_tasks.container_registry_tasks_agent_pool_name
@@ -393,6 +428,11 @@ output "container_registry_tasks_timer_trigger" {
 }
 
 # --- azurerm_container_registry_token ---
+output "container_registry_tokens_id" {
+  description = "Map of id values across all container_registry_tokens, keyed the same as var.container_registry_tokens"
+  value       = module.container_registry_tokens.container_registry_tokens_id
+}
+
 output "container_registry_tokens_container_registry_name" {
   description = "Map of container_registry_name values across all container_registry_tokens, keyed the same as var.container_registry_tokens"
   value       = module.container_registry_tokens.container_registry_tokens_container_registry_name
@@ -419,12 +459,22 @@ output "container_registry_tokens_scope_map_id" {
 }
 
 # --- azurerm_container_registry_task_schedule_run_now ---
+output "container_registry_task_schedule_run_nows_id" {
+  description = "Map of id values across all container_registry_task_schedule_run_nows, keyed the same as var.container_registry_task_schedule_run_nows"
+  value       = module.container_registry_task_schedule_run_nows.container_registry_task_schedule_run_nows_id
+}
+
 output "container_registry_task_schedule_run_nows_container_registry_task_id" {
   description = "Map of container_registry_task_id values across all container_registry_task_schedule_run_nows, keyed the same as var.container_registry_task_schedule_run_nows"
   value       = module.container_registry_task_schedule_run_nows.container_registry_task_schedule_run_nows_container_registry_task_id
 }
 
 # --- azurerm_container_registry_token_password ---
+output "container_registry_token_passwords_id" {
+  description = "Map of id values across all container_registry_token_passwords, keyed the same as var.container_registry_token_passwords"
+  value       = module.container_registry_token_passwords.container_registry_token_passwords_id
+}
+
 output "container_registry_token_passwords_container_registry_token_id" {
   description = "Map of container_registry_token_id values across all container_registry_token_passwords, keyed the same as var.container_registry_token_passwords"
   value       = module.container_registry_token_passwords.container_registry_token_passwords_container_registry_token_id
