@@ -5,7 +5,7 @@ locals {
     for k1, v1 in var.container_registries : {
       for k2, v2 in coalesce(v1.container_connected_registries, {}) :
       "${k1}/${k2}" => merge(v2, {
-        container_registry_id = module.container_registries.container_registries["${k1}"].id
+        container_registry_id = module.container_registries.container_registries_id["${k1}"]
       })
     }
   ]...)
@@ -14,7 +14,7 @@ locals {
     for k1, v1 in var.container_registries : {
       for k2, v2 in coalesce(v1.container_registry_agent_pools, {}) :
       "${k1}/${k2}" => merge(v2, {
-        container_registry_name = module.container_registries.container_registries["${k1}"].name
+        container_registry_name = module.container_registries.container_registries_name["${k1}"]
       })
     }
   ]...)
@@ -23,7 +23,7 @@ locals {
     for k1, v1 in var.container_registries : {
       for k2, v2 in coalesce(v1.container_registry_cache_rules, {}) :
       "${k1}/${k2}" => merge(v2, {
-        container_registry_id = module.container_registries.container_registries["${k1}"].id
+        container_registry_id = module.container_registries.container_registries_id["${k1}"]
       })
     }
   ]...)
@@ -32,7 +32,7 @@ locals {
     for k1, v1 in var.container_registries : {
       for k2, v2 in coalesce(v1.container_registry_credential_sets, {}) :
       "${k1}/${k2}" => merge(v2, {
-        container_registry_id = module.container_registries.container_registries["${k1}"].id
+        container_registry_id = module.container_registries.container_registries_id["${k1}"]
       })
     }
   ]...)
@@ -41,7 +41,7 @@ locals {
     for k1, v1 in var.container_registries : {
       for k2, v2 in coalesce(v1.container_registry_scope_maps, {}) :
       "${k1}/${k2}" => merge(v2, {
-        container_registry_name = module.container_registries.container_registries["${k1}"].name
+        container_registry_name = module.container_registries.container_registries_name["${k1}"]
       })
     }
   ]...)
@@ -50,7 +50,7 @@ locals {
     for k1, v1 in var.container_registries : {
       for k2, v2 in coalesce(v1.container_registry_tasks, {}) :
       "${k1}/${k2}" => merge(v2, {
-        container_registry_id = module.container_registries.container_registries["${k1}"].id
+        container_registry_id = module.container_registries.container_registries_id["${k1}"]
       })
     }
   ]...)
@@ -59,7 +59,7 @@ locals {
     for k1, v1 in var.container_registries : {
       for k2, v2 in coalesce(v1.container_registry_tokens, {}) :
       "${k1}/${k2}" => merge(v2, {
-        container_registry_name = module.container_registries.container_registries["${k1}"].name
+        container_registry_name = module.container_registries.container_registries_name["${k1}"]
       })
     }
   ]...)
@@ -69,7 +69,7 @@ locals {
       for k2, v2 in coalesce(v1.container_registry_tasks, {}) : {
         for k3, v3 in coalesce(v2.container_registry_task_schedule_run_nows, {}) :
         "${k1}/${k2}/${k3}" => merge(v3, {
-          container_registry_task_id = module.container_registry_tasks.container_registry_tasks["${k1}/${k2}"].id
+          container_registry_task_id = module.container_registry_tasks.container_registry_tasks_id["${k1}/${k2}"]
         })
       }
     ]...)
@@ -80,7 +80,7 @@ locals {
       for k2, v2 in coalesce(v1.container_registry_tokens, {}) : {
         for k3, v3 in coalesce(v2.container_registry_token_passwords, {}) :
         "${k1}/${k2}/${k3}" => merge(v3, {
-          container_registry_token_id = module.container_registry_tokens.container_registry_tokens["${k1}/${k2}"].id
+          container_registry_token_id = module.container_registry_tokens.container_registry_tokens_id["${k1}/${k2}"]
         })
       }
     ]...)
