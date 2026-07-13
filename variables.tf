@@ -106,48 +106,48 @@ EOT
     name                          = string
     resource_group_name           = string
     sku                           = string
-    admin_enabled                 = optional(bool) # Default: false
+    admin_enabled                 = optional(bool)
     anonymous_pull_enabled        = optional(bool)
     data_endpoint_enabled         = optional(bool)
-    export_policy_enabled         = optional(bool)   # Default: true
-    network_rule_bypass_option    = optional(string) # Default: "AzureServices"
-    public_network_access_enabled = optional(bool)   # Default: true
+    export_policy_enabled         = optional(bool)
+    network_rule_bypass_option    = optional(string)
+    public_network_access_enabled = optional(bool)
     quarantine_policy_enabled     = optional(bool)
     retention_policy_in_days      = optional(number)
     tags                          = optional(map(string))
-    trust_policy_enabled          = optional(bool) # Default: false
-    zone_redundancy_enabled       = optional(bool) # Default: false
-    encryption = optional(object({
-      identity_client_id = string
-      key_vault_key_id   = string
-    }))
+    trust_policy_enabled          = optional(bool)
+    zone_redundancy_enabled       = optional(bool)
+    encryption = optional(list(object({
+      identity_client_id = optional(string)
+      key_vault_key_id   = optional(string)
+    })))
     georeplications = optional(list(object({
       location                  = string
       regional_endpoint_enabled = optional(bool)
       tags                      = optional(map(string))
-      zone_redundancy_enabled   = optional(bool) # Default: false
+      zone_redundancy_enabled   = optional(bool)
     })))
     identity = optional(object({
       identity_ids = optional(set(string))
       type         = string
     }))
-    network_rule_set = optional(object({
-      default_action = optional(string) # Default: "Allow"
+    network_rule_set = optional(list(object({
+      default_action = optional(string)
       ip_rule = optional(list(object({
-        action   = string
-        ip_range = string
+        action   = optional(string)
+        ip_range = optional(string)
       })))
-    }))
+    })))
     container_connected_registries = optional(map(object({
       name               = string
       sync_token_id      = string
-      audit_log_enabled  = optional(bool) # Default: false
+      audit_log_enabled  = optional(bool)
       client_token_ids   = optional(list(string))
-      log_level          = optional(string) # Default: "None"
-      mode               = optional(string) # Default: "ReadWrite"
+      log_level          = optional(string)
+      mode               = optional(string)
       parent_registry_id = optional(string)
-      sync_message_ttl   = optional(string) # Default: "P1D"
-      sync_schedule      = optional(string) # Default: "* * * * *"
+      sync_message_ttl   = optional(string)
+      sync_schedule      = optional(string)
       sync_window        = optional(string)
       notification = optional(list(object({
         action = string
@@ -160,9 +160,9 @@ EOT
       location                  = string
       name                      = string
       resource_group_name       = string
-      instance_count            = optional(number) # Default: 1
+      instance_count            = optional(number)
       tags                      = optional(map(string))
-      tier                      = optional(string) # Default: "S1"
+      tier                      = optional(string)
       virtual_network_subnet_id = optional(string)
     })))
     container_registry_cache_rules = optional(map(object({
@@ -191,16 +191,16 @@ EOT
     container_registry_tasks = optional(map(object({
       name               = string
       agent_pool_name    = optional(string)
-      enabled            = optional(bool) # Default: true
-      is_system_task     = optional(bool) # Default: false
+      enabled            = optional(bool)
+      is_system_task     = optional(bool)
       log_template       = optional(string)
       tags               = optional(map(string))
-      timeout_in_seconds = optional(number) # Default: 3600
+      timeout_in_seconds = optional(number)
       agent_setting = optional(object({
         cpu = number
       }))
       base_image_trigger = optional(object({
-        enabled                     = optional(bool) # Default: true
+        enabled                     = optional(bool)
         name                        = string
         type                        = string
         update_trigger_endpoint     = optional(string)
@@ -208,12 +208,12 @@ EOT
       }))
       docker_step = optional(object({
         arguments            = optional(map(string))
-        cache_enabled        = optional(bool) # Default: true
+        cache_enabled        = optional(bool)
         context_access_token = string
         context_path         = string
         dockerfile_path      = string
         image_names          = optional(list(string))
-        push_enabled         = optional(bool) # Default: true
+        push_enabled         = optional(bool)
         secret_arguments     = optional(map(string))
         target               = optional(string)
       }))
@@ -262,14 +262,14 @@ EOT
           token_type        = string
         }))
         branch         = optional(string)
-        enabled        = optional(bool) # Default: true
+        enabled        = optional(bool)
         events         = list(string)
         name           = string
         repository_url = string
         source_type    = string
       })))
       timer_trigger = optional(list(object({
-        enabled  = optional(bool) # Default: true
+        enabled  = optional(bool)
         name     = string
         schedule = string
       })))
@@ -281,7 +281,7 @@ EOT
       name                = string
       resource_group_name = string
       scope_map_id        = string
-      enabled             = optional(bool) # Default: true
+      enabled             = optional(bool)
       container_registry_token_passwords = optional(map(object({
         password1 = object({
           expiry = optional(string)
