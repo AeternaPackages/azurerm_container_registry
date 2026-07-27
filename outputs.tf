@@ -25,6 +25,11 @@ output "container_registries_anonymous_pull_enabled" {
   value       = module.container_registries.container_registries_anonymous_pull_enabled
 }
 
+output "container_registries_azuread_authentication_as_arm_policy_enabled" {
+  description = "Map of azuread_authentication_as_arm_policy_enabled values across all container_registries, keyed the same as var.container_registries"
+  value       = module.container_registries.container_registries_azuread_authentication_as_arm_policy_enabled
+}
+
 output "container_registries_data_endpoint_enabled" {
   description = "Map of data_endpoint_enabled values across all container_registries, keyed the same as var.container_registries"
   value       = module.container_registries.container_registries_data_endpoint_enabled
@@ -70,6 +75,11 @@ output "container_registries_name" {
   value       = module.container_registries.container_registries_name
 }
 
+output "container_registries_network_rule_bypass_for_tasks_enabled" {
+  description = "Map of network_rule_bypass_for_tasks_enabled values across all container_registries, keyed the same as var.container_registries"
+  value       = module.container_registries.container_registries_network_rule_bypass_for_tasks_enabled
+}
+
 output "container_registries_network_rule_bypass_option" {
   description = "Map of network_rule_bypass_option values across all container_registries, keyed the same as var.container_registries"
   value       = module.container_registries.container_registries_network_rule_bypass_option
@@ -98,6 +108,11 @@ output "container_registries_resource_group_name" {
 output "container_registries_retention_policy_in_days" {
   description = "Map of retention_policy_in_days values across all container_registries, keyed the same as var.container_registries"
   value       = module.container_registries.container_registries_retention_policy_in_days
+}
+
+output "container_registries_role_assignment_mode" {
+  description = "Map of role_assignment_mode values across all container_registries, keyed the same as var.container_registries"
+  value       = module.container_registries.container_registries_role_assignment_mode
 }
 
 output "container_registries_sku" {
