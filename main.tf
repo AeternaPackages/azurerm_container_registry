@@ -1,5 +1,5 @@
 locals {
-  container_registries = { for k1, v1 in var.container_registries : k1 => { admin_enabled = v1.admin_enabled, anonymous_pull_enabled = v1.anonymous_pull_enabled, azuread_authentication_as_arm_policy_enabled = v1.azuread_authentication_as_arm_policy_enabled, data_endpoint_enabled = v1.data_endpoint_enabled, encryption = v1.encryption, export_policy_enabled = v1.export_policy_enabled, georeplications = v1.georeplications, identity = v1.identity, location = v1.location, name = v1.name, network_rule_bypass_for_tasks_enabled = v1.network_rule_bypass_for_tasks_enabled, network_rule_bypass_option = v1.network_rule_bypass_option, network_rule_set = v1.network_rule_set, public_network_access_enabled = v1.public_network_access_enabled, quarantine_policy_enabled = v1.quarantine_policy_enabled, resource_group_name = v1.resource_group_name, retention_policy_in_days = v1.retention_policy_in_days, role_assignment_mode = v1.role_assignment_mode, sku = v1.sku, tags = v1.tags, trust_policy_enabled = v1.trust_policy_enabled, zone_redundancy_enabled = v1.zone_redundancy_enabled } }
+  container_registries = { for k1, v1 in var.container_registries : k1 => { admin_enabled = v1.admin_enabled, anonymous_pull_enabled = v1.anonymous_pull_enabled, azuread_authentication_as_arm_policy_enabled = v1.azuread_authentication_as_arm_policy_enabled, data_endpoint_enabled = v1.data_endpoint_enabled, encryption = v1.encryption, export_policy_enabled = v1.export_policy_enabled, georeplications = v1.georeplications, identity = v1.identity, location = v1.location, name = v1.name, network_rule_bypass_for_tasks_enabled = v1.network_rule_bypass_for_tasks_enabled, network_rule_bypass_option = v1.network_rule_bypass_option, network_rule_set = v1.network_rule_set, public_network_access_enabled = v1.public_network_access_enabled, quarantine_policy_enabled = v1.quarantine_policy_enabled, resource_group_name = v1.resource_group_name, retention_policy_in_days = v1.retention_policy_in_days, role_assignment_mode = v1.role_assignment_mode, sku = v1.sku, tags = v1.tags, zone_redundancy_enabled = v1.zone_redundancy_enabled } }
 
   container_connected_registries = merge([
     for k1, v1 in var.container_registries : {
@@ -88,60 +88,60 @@ locals {
 }
 
 module "container_registries" {
-  source               = "git::https://github.com/AeternaModules/azurerm_container_registry.git?ref=v4.81.0"
+  source               = "git::https://github.com/AeternaModules/azurerm_container_registry.git?ref=v5.0.0"
   container_registries = local.container_registries
 }
 
 module "container_connected_registries" {
-  source                         = "git::https://github.com/AeternaModules/azurerm_container_connected_registry.git?ref=v4.81.0"
+  source                         = "git::https://github.com/AeternaModules/azurerm_container_connected_registry.git?ref=v5.0.0"
   container_connected_registries = local.container_connected_registries
   depends_on                     = [module.container_registries]
 }
 
 module "container_registry_agent_pools" {
-  source                         = "git::https://github.com/AeternaModules/azurerm_container_registry_agent_pool.git?ref=v4.81.0"
+  source                         = "git::https://github.com/AeternaModules/azurerm_container_registry_agent_pool.git?ref=v5.0.0"
   container_registry_agent_pools = local.container_registry_agent_pools
   depends_on                     = [module.container_registries]
 }
 
 module "container_registry_cache_rules" {
-  source                         = "git::https://github.com/AeternaModules/azurerm_container_registry_cache_rule.git?ref=v4.81.0"
+  source                         = "git::https://github.com/AeternaModules/azurerm_container_registry_cache_rule.git?ref=v5.0.0"
   container_registry_cache_rules = local.container_registry_cache_rules
   depends_on                     = [module.container_registries]
 }
 
 module "container_registry_credential_sets" {
-  source                             = "git::https://github.com/AeternaModules/azurerm_container_registry_credential_set.git?ref=v4.81.0"
+  source                             = "git::https://github.com/AeternaModules/azurerm_container_registry_credential_set.git?ref=v5.0.0"
   container_registry_credential_sets = local.container_registry_credential_sets
   depends_on                         = [module.container_registries]
 }
 
 module "container_registry_scope_maps" {
-  source                        = "git::https://github.com/AeternaModules/azurerm_container_registry_scope_map.git?ref=v4.81.0"
+  source                        = "git::https://github.com/AeternaModules/azurerm_container_registry_scope_map.git?ref=v5.0.0"
   container_registry_scope_maps = local.container_registry_scope_maps
   depends_on                    = [module.container_registries]
 }
 
 module "container_registry_tasks" {
-  source                   = "git::https://github.com/AeternaModules/azurerm_container_registry_task.git?ref=v4.81.0"
+  source                   = "git::https://github.com/AeternaModules/azurerm_container_registry_task.git?ref=v5.0.0"
   container_registry_tasks = local.container_registry_tasks
   depends_on               = [module.container_registries]
 }
 
 module "container_registry_tokens" {
-  source                    = "git::https://github.com/AeternaModules/azurerm_container_registry_token.git?ref=v4.81.0"
+  source                    = "git::https://github.com/AeternaModules/azurerm_container_registry_token.git?ref=v5.0.0"
   container_registry_tokens = local.container_registry_tokens
   depends_on                = [module.container_registries]
 }
 
 module "container_registry_task_schedule_run_nows" {
-  source                                    = "git::https://github.com/AeternaModules/azurerm_container_registry_task_schedule_run_now.git?ref=v4.81.0"
+  source                                    = "git::https://github.com/AeternaModules/azurerm_container_registry_task_schedule_run_now.git?ref=v5.0.0"
   container_registry_task_schedule_run_nows = local.container_registry_task_schedule_run_nows
   depends_on                                = [module.container_registry_tasks]
 }
 
 module "container_registry_token_passwords" {
-  source                             = "git::https://github.com/AeternaModules/azurerm_container_registry_token_password.git?ref=v4.81.0"
+  source                             = "git::https://github.com/AeternaModules/azurerm_container_registry_token_password.git?ref=v5.0.0"
   container_registry_token_passwords = local.container_registry_token_passwords
   depends_on                         = [module.container_registry_tokens]
 }

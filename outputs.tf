@@ -125,11 +125,6 @@ output "container_registries_tags" {
   value       = module.container_registries.container_registries_tags
 }
 
-output "container_registries_trust_policy_enabled" {
-  description = "Map of trust_policy_enabled values across all container_registries, keyed the same as var.container_registries"
-  value       = module.container_registries.container_registries_trust_policy_enabled
-}
-
 output "container_registries_zone_redundancy_enabled" {
   description = "Map of zone_redundancy_enabled values across all container_registries, keyed the same as var.container_registries"
   value       = module.container_registries.container_registries_zone_redundancy_enabled
