@@ -88,60 +88,60 @@ locals {
 }
 
 module "container_registries" {
-  source               = "git::https://github.com/AeternaModules/azurerm_container_registry.git?ref=v5.0.0"
+  source               = "git::https://github.com/AeternaModules/azurerm_container_registry.git?ref=v5.0.1"
   container_registries = local.container_registries
 }
 
 module "container_connected_registries" {
-  source                         = "git::https://github.com/AeternaModules/azurerm_container_connected_registry.git?ref=v5.0.0"
+  source                         = "git::https://github.com/AeternaModules/azurerm_container_connected_registry.git?ref=v5.0.1"
   container_connected_registries = local.container_connected_registries
   depends_on                     = [module.container_registries]
 }
 
 module "container_registry_agent_pools" {
-  source                         = "git::https://github.com/AeternaModules/azurerm_container_registry_agent_pool.git?ref=v5.0.0"
+  source                         = "git::https://github.com/AeternaModules/azurerm_container_registry_agent_pool.git?ref=v5.0.1"
   container_registry_agent_pools = local.container_registry_agent_pools
   depends_on                     = [module.container_registries]
 }
 
 module "container_registry_cache_rules" {
-  source                         = "git::https://github.com/AeternaModules/azurerm_container_registry_cache_rule.git?ref=v5.0.0"
+  source                         = "git::https://github.com/AeternaModules/azurerm_container_registry_cache_rule.git?ref=v5.0.1"
   container_registry_cache_rules = local.container_registry_cache_rules
   depends_on                     = [module.container_registries]
 }
 
 module "container_registry_credential_sets" {
-  source                             = "git::https://github.com/AeternaModules/azurerm_container_registry_credential_set.git?ref=v5.0.0"
+  source                             = "git::https://github.com/AeternaModules/azurerm_container_registry_credential_set.git?ref=v5.0.1"
   container_registry_credential_sets = local.container_registry_credential_sets
   depends_on                         = [module.container_registries]
 }
 
 module "container_registry_scope_maps" {
-  source                        = "git::https://github.com/AeternaModules/azurerm_container_registry_scope_map.git?ref=v5.0.0"
+  source                        = "git::https://github.com/AeternaModules/azurerm_container_registry_scope_map.git?ref=v5.0.1"
   container_registry_scope_maps = local.container_registry_scope_maps
   depends_on                    = [module.container_registries]
 }
 
 module "container_registry_tasks" {
-  source                   = "git::https://github.com/AeternaModules/azurerm_container_registry_task.git?ref=v5.0.0"
+  source                   = "git::https://github.com/AeternaModules/azurerm_container_registry_task.git?ref=v5.0.1"
   container_registry_tasks = local.container_registry_tasks
   depends_on               = [module.container_registries]
 }
 
 module "container_registry_tokens" {
-  source                    = "git::https://github.com/AeternaModules/azurerm_container_registry_token.git?ref=v5.0.0"
+  source                    = "git::https://github.com/AeternaModules/azurerm_container_registry_token.git?ref=v5.0.1"
   container_registry_tokens = local.container_registry_tokens
   depends_on                = [module.container_registries]
 }
 
 module "container_registry_task_schedule_run_nows" {
-  source                                    = "git::https://github.com/AeternaModules/azurerm_container_registry_task_schedule_run_now.git?ref=v5.0.0"
+  source                                    = "git::https://github.com/AeternaModules/azurerm_container_registry_task_schedule_run_now.git?ref=v5.0.1"
   container_registry_task_schedule_run_nows = local.container_registry_task_schedule_run_nows
   depends_on                                = [module.container_registry_tasks]
 }
 
 module "container_registry_token_passwords" {
-  source                             = "git::https://github.com/AeternaModules/azurerm_container_registry_token_password.git?ref=v5.0.0"
+  source                             = "git::https://github.com/AeternaModules/azurerm_container_registry_token_password.git?ref=v5.0.1"
   container_registry_token_passwords = local.container_registry_token_passwords
   depends_on                         = [module.container_registry_tokens]
 }
